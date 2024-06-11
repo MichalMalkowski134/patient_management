@@ -1,96 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".EditUsersActivity">
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/texttitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Podaj dane nowego użytkownika"
+        android:textSize="24dp"
+        android:layout_marginTop="20dp"/>
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nazwa użytkownika"
+        android:textSize="24dp"
+        android:layout_below="@+id/texttitle"
+        android:inputType="textPersonName"/>
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hasło"
+        android:textSize="24dp"
+        android:layout_below="@+id/username"
+        android:inputType="text"/>
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Imię i nazwisko"
+        android:textSize="24dp"
+        android:layout_below="@+id/password"
+        android:inputType="textPersonName"/>
+    <Button
+        android:id="@+id/btnInsert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
         android:text="Dodaj użytkownika"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.205"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_constraintEnd_toEndOf="parent"
-        tools:layout_constraintHorizontal_bias="0.497"
-        tools:layout_constraintStart_toStartOf="parent"
-        tools:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintVertical_bias="0.635" />
-
-    <EditText
-        android:id="@+id/userNameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Nazwa użytkownika"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_constraintEnd_toEndOf="parent"
-        tools:layout_constraintHorizontal_bias="0.497"
-        tools:layout_constraintStart_toStartOf="parent"
-        tools:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintVertical_bias="0.406" />
-
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/name"/>
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="addUser"
-        android:text="Dodaj nowego użytkownika"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.792"
-        tools:ignore="MissingConstraints" />
-
+        android:textSize="24dp"
+        android:text="Usuń użytkownika"
+        android:layout_below="@id/btnInsert"/>
     <Button
-        android:id="@+id/main_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="mainPage"
-        android:text="Wróć do logowania"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.913"
-        tools:ignore="MissingConstraints" />
+        android:textSize="24dp"
+        android:text="Zobacz użytkowników"
+        android:layout_below="@id/btnDelete"/>
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="Wróć do ekranu logowania"
+        android:layout_below="@id/btnView"/>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hasło"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.563"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="378dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
