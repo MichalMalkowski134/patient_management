@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     Button buttonAddData;
     DatabaseHelper DB;
+    Singleton singleton;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         DB = new DatabaseHelper(this);
         username = findViewById(R.id.userNameEditText);
         password = findViewById(R.id.passwordEditText);
+        singleton = Singleton.getInstance();
+        //DB.deleteDatabase(MainActivity.this);
 
     }
 
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.userNameEditText);
         password = findViewById(R.id.passwordEditText);
 
-        Cursor res = DB.getdata();
+        Cursor res = DB.getuser();
         if(res.getCount()==0){
             Toast.makeText(MainActivity.this, "No Entry Exists", Toast.LENGTH_SHORT).show();
             return;
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(username.getText().toString().equals(res.getString(0)) && password.getText().toString().equals(res.getString(1)))
             {
+                singleton.setValue(Integer.valueOf(res.getString(2)));
                 Intent intent = new Intent(MainActivity.this ,
                         MenuActivity.class);
                 MainActivity.this.startActivity(intent);

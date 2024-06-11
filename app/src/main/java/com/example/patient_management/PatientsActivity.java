@@ -12,6 +12,14 @@ public class PatientsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patients);
+
+
+    }
+
+    public void addPatient(View v) {
+        Intent intent = new Intent(PatientsActivity.this ,
+                AddPatientActivity.class);
+        PatientsActivity.this.startActivity(intent);
     }
 
     public void backToMenu(View v) {

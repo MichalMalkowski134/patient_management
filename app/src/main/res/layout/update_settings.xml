@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".UpdateSettingsActivity">
+    <TextView
+        android:id="@+id/texttitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Informacje o Tobie"
+        android:textSize="24dp"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/textname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Imię i nazwisko"
+        android:textSize="24dp"
+        android:layout_below="@+id/texttitle"/>
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Imię i nazwisko"
+        android:textSize="24dp"
+        android:layout_below="@+id/textname"
+        android:inputType="textPersonName"/>
+    <TextView
+        android:id="@+id/textspecialization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Specjalizacja"
+        android:textSize="24dp"
+        android:layout_below="@+id/name"/>
+    <EditText
+        android:id="@+id/specialization"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Specjalizacja"
+        android:textSize="24dp"
+        android:layout_below="@+id/textspecialization"
+        android:inputType="text"/>
+    <TextView
+        android:id="@+id/textroom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pokój"
+        android:textSize="24dp"
+        android:layout_below="@+id/specialization"/>
+    <EditText
+        android:id="@+id/room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pokój"
+        android:textSize="24dp"
+        android:layout_below="@+id/textroom"
+        android:inputType="text"/>
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="Aktualizuj"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/room"/>
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="Usuń konto"
+        android:layout_below="@id/btnUpdate"/>
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="Wróć do widoku ustawień"
+        android:layout_below="@id/btnDelete"/>
+
+</RelativeLayout>
