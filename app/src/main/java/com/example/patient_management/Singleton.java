@@ -13,13 +13,13 @@ public class Singleton {
     private Singleton() {
     }
 
-    private int val;
+    private String val;
 
-    public int getValue() {
+    public String getValue() {
         return val;
     }
 
-    public void setValue(int value) {
+    public void setValue(String value) {
         this.val = value;
     }
 }

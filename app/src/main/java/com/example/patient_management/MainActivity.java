@@ -14,12 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button login_button;
     EditText username;
     EditText password;
     //DatabaseManager dbManager;
-    DatabaseHelper databaseHelper;
-    Button buttonAddData;
     DatabaseHelper DB;
     Singleton singleton;
 
@@ -33,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.passwordEditText);
         singleton = Singleton.getInstance();
         //DB.deleteDatabase(MainActivity.this);
-
     }
 
 
@@ -56,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(username.getText().toString().equals(res.getString(0)) && password.getText().toString().equals(res.getString(1)))
             {
-                singleton.setValue(Integer.valueOf(res.getString(2)));
+                singleton.setValue(res.getString(0));
                 Intent intent = new Intent(MainActivity.this ,
                         MenuActivity.class);
                 MainActivity.this.startActivity(intent);

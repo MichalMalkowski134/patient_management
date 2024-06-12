@@ -36,34 +36,34 @@ public class UpdateSettingsActivity extends AppCompatActivity {
         name.setText(res.getString(0));
         specialization.setText(res.getString(1));
         room.setText(res.getString(2));
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String nameTXT = name.getText().toString();
-                String specializationTXT = specialization.getText().toString();
-                int roomTXT = Integer.valueOf(room.getText().toString());
+//        update.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String nameTXT = name.getText().toString();
+//                String specializationTXT = specialization.getText().toString();
+//                int roomTXT = Integer.valueOf(room.getText().toString());
+//
+//                Boolean checkinsertdata = DB.updateUser(singleton.getValue(), nameTXT, specializationTXT, roomTXT);
+//                if(checkinsertdata==true)
+//                    Toast.makeText(UpdateSettingsActivity.this, "New Entry Inserted", Toast.LENGTH_SHORT).show();
+//                else
+//                    Toast.makeText(UpdateSettingsActivity.this, "New Entry Not Inserted", Toast.LENGTH_SHORT).show();
+//            }        });
 
-                Boolean checkinsertdata = DB.updatedoctor(singleton.getValue(), nameTXT, specializationTXT, roomTXT);
-                if(checkinsertdata==true)
-                    Toast.makeText(UpdateSettingsActivity.this, "New Entry Inserted", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(UpdateSettingsActivity.this, "New Entry Not Inserted", Toast.LENGTH_SHORT).show();
-            }        });
-
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Boolean checkudeletedata = DB.deletedoctor(singleton.getValue());
-                if(checkudeletedata==true)
-                {
-                    Intent intent = new Intent(UpdateSettingsActivity.this ,
-                            MainActivity.class);
-                    UpdateSettingsActivity.this.startActivity(intent);
-                    Toast.makeText(UpdateSettingsActivity.this, "Entry Deleted", Toast.LENGTH_SHORT).show();
-                }
-                else
-                    Toast.makeText(UpdateSettingsActivity.this, "Entry Not Deleted", Toast.LENGTH_SHORT).show();
-            }        });
+//        delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Boolean checkudeletedata = DB.deletedoctor(singleton.getValue());
+//                if(checkudeletedata==true)
+//                {
+//                    Intent intent = new Intent(UpdateSettingsActivity.this ,
+//                            MainActivity.class);
+//                    UpdateSettingsActivity.this.startActivity(intent);
+//                    Toast.makeText(UpdateSettingsActivity.this, "Entry Deleted", Toast.LENGTH_SHORT).show();
+//                }
+//                else
+//                    Toast.makeText(UpdateSettingsActivity.this, "Entry Not Deleted", Toast.LENGTH_SHORT).show();
+//            }        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

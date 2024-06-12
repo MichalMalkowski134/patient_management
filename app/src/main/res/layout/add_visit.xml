@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:background="@drawable/gradient_background"
-    tools:context=".EditUsersActivity">
+    tools:context=".AddVisitActivity">
 
     <TextView
         android:id="@+id/texttitle"
         android:layout_width="369dp"
         android:layout_height="45dp"
-        android:text="UTWÓRZ NOWE KONTO"
+        android:text="Dodaj wizytę"
         android:textAlignment="center"
         android:textColor="#0523B7"
         android:textSize="28dp"
@@ -35,13 +35,13 @@
         app:layout_constraintVertical_bias="0.16" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/patient"
         android:layout_width="285dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="32dp"
         android:textSize="18dp"
-        android:hint="Nazwa użytkownika"
+        android:hint="Pesel pacjenta"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/view4"
@@ -49,12 +49,12 @@
         app:layout_constraintTop_toTopOf="@+id/view4" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/description"
         android:layout_width="285dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:hint="Hasło"
+        android:hint="Opis wizyty"
         android:inputType="text"
         android:textAlignment="center"
         android:textSize="18dp"
@@ -62,67 +62,23 @@
         app:layout_constraintEnd_toEndOf="@+id/view4"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/view4"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/patient" />
 
     <EditText
-        android:id="@+id/nameSurname"
+        android:id="@+id/date"
         android:layout_width="285dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:textSize="18dp"
-        android:layout_marginTop="16dp"        android:hint="Imię i nazwisko"
+        android:layout_marginTop="16dp"
+        android:hint="Data"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/view4"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/view4"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-
-    <EditText
-        android:id="@+id/specialization"
-        android:layout_width="285dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Specjalizacja"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textSize="18dp"
-        android:layout_marginTop="16dp"        app:layout_constraintEnd_toEndOf="@+id/view4"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/view4"
-        app:layout_constraintTop_toBottomOf="@+id/nameSurname" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="285dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textSize="18dp"
-        android:layout_marginTop="16dp"        app:layout_constraintEnd_toEndOf="@+id/view4"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/view4"
-        app:layout_constraintTop_toBottomOf="@+id/phone" />
-
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="285dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Telefon"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textSize="18dp"
-        android:layout_marginTop="16dp"        app:layout_constraintEnd_toEndOf="@+id/view4"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/view4"
-        app:layout_constraintTop_toBottomOf="@+id/specialization" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <Button
         android:id="@+id/btnInsert"
@@ -130,12 +86,12 @@
         android:layout_height="63dp"
         android:layout_above="@+id/btnBack"
         android:layout_marginBottom="10dp"
-        android:text="Dodaj użytkownika"
+        android:text="Dodaj wizytę"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="@+id/view4"
         app:layout_constraintStart_toStartOf="@+id/view4"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/date"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
@@ -143,7 +99,7 @@
         android:layout_width="321dp"
         android:layout_height="58dp"
         android:layout_alignParentBottom="true"
-        android:text="Wróć do ekranu logowania"
+        android:text="Powrót"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

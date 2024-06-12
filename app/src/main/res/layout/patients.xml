@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/gradient_background"
     android:layout_height="match_parent">
 
     <TextView
@@ -13,11 +14,21 @@
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.148"
+        app:layout_constraintVertical_bias="0.083"
         tools:ignore="MissingConstraints" />
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="0dp"
+        android:layout_height="384dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/settings_button"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.035"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/settings_button"
@@ -38,11 +49,11 @@
         android:layout_height="wrap_content"
         android:onClick="addPatient"
         android:text="Dodaj pacjenta"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/settings_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84" />
+        app:layout_constraintTop_toBottomOf="@+id/list_view"
+        app:layout_constraintVertical_bias="0.534" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
