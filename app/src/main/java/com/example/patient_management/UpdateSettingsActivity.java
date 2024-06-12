@@ -31,7 +31,7 @@ public class UpdateSettingsActivity extends AppCompatActivity {
         DB = new DatabaseHelper(this);
         singleton = Singleton.getInstance();
 
-        Cursor res = DB.getdoctor(singleton.getValue());
+        Cursor res = DB.getUser(singleton.getValue());
         res.moveToNext();
         name.setText(res.getString(0));
         specialization.setText(res.getString(1));

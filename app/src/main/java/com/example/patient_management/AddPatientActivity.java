@@ -12,9 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 public class AddPatientActivity extends AppCompatActivity {
-    EditText name, pesel;
+    EditText name, pesel, treatmentHistory;
     Button insert, delete, view, back;
     DatabaseHelper DB;
+    Singleton singleton;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -23,9 +24,11 @@ public class AddPatientActivity extends AppCompatActivity {
         setContentView(R.layout.add_patient);
         name = findViewById(R.id.username);
         pesel = findViewById(R.id.pesel);
+        treatmentHistory = findViewById(R.id.treatmentHistory);
+        singleton = Singleton.getInstance();
         insert = findViewById(R.id.btnInsert);
         delete = findViewById(R.id.btnDelete);
-        view = findViewById(R.id.btnView);
+//        view = findViewById(R.id.btnView);
         back = findViewById(R.id.btnBack);
         DB = new DatabaseHelper(this);
         insert.setOnClickListener(new View.OnClickListener() {
@@ -33,45 +36,26 @@ public class AddPatientActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String nameTXT = name.getText().toString();
                 String peselTXT = pesel.getText().toString();
+                String treatmentHistoryTXT = treatmentHistory.getText().toString();
 
-                Boolean checkinsertdata = DB.insertpatient(peselTXT, nameTXT, 1);
+                Boolean checkinsertdata = DB.insertPatient(peselTXT, nameTXT, treatmentHistoryTXT ,singleton.getValue());
                 if(checkinsertdata==true)
                     Toast.makeText(AddPatientActivity.this, "New Entry Inserted", Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(AddPatientActivity.this, "New Entry Not Inserted", Toast.LENGTH_SHORT).show();
             }        });
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String peselTXT = pesel.getText().toString();
-                Boolean checkudeletedata = DB.deletepatient(peselTXT);
-                if(checkudeletedata==true)
-                    Toast.makeText(AddPatientActivity.this, "Entry Deleted", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(AddPatientActivity.this, "Entry Not Deleted", Toast.LENGTH_SHORT).show();
-            }        });
-
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Cursor res = DB.getpatient();
-                if(res.getCount()==0){
-                    Toast.makeText(AddPatientActivity.this, "No Entry Exists", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                StringBuffer buffer = new StringBuffer();
-                while(res.moveToNext()){
-                    buffer.append("Imię i nazwisko :"+res.getString(1)+"\n");
-                    buffer.append("Pesel :"+res.getString(0)+"\n");
-                }
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddPatientActivity.this);
-                builder.setCancelable(true);
-                builder.setTitle("User Entries");
-                builder.setMessage(buffer.toString());
-                builder.show();
-            }        });
+//        delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String peselTXT = pesel.getText().toString();
+//                Boolean checkudeletedata = DB.deletepatient(peselTXT);
+//                if(checkudeletedata==true)
+//                    Toast.makeText(AddPatientActivity.this, "Entry Deleted", Toast.LENGTH_SHORT).show();
+//                else
+//                    Toast.makeText(AddPatientActivity.this, "Entry Not Deleted", Toast.LENGTH_SHORT).show();
+//            }        });
+//
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

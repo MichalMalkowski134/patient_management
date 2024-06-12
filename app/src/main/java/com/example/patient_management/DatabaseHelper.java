@@ -20,9 +20,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase DB) {
         DB.execSQL("create Table USERS(username TEXT primary key, password TEXT, nameSurname TEXT, specialization TEXT, email TEXT, phone TEXT,doctor TEXT)");
-        DB.execSQL("create Table DOCTORS(ID INTEGER primary key AUTOINCREMENT, name TEXT, specialization TEXT, room INTEGER)");
         DB.execSQL("create Table MESSAGES(ID INTEGER primary key AUTOINCREMENT, from_ TEXT, to_ TEXT, message TEXT, date TEXT )");
-        DB.execSQL("create Table PATIENTS(pesel TEXT primary key, name TEXT, doctor INTEGER)");
+        DB.execSQL("create Table PATIENTS(pesel TEXT primary key, nameSurname TEXT, treatmentHistory TEXT, doctorUsername TEXT)");
         DB.execSQL("create Table VISITS(ID INTEGER primary key AUTOINCREMENT, patient INTEGER, doctor INTEGER, description TEXT, date TEXT, prescription TEXT)");
     }
     @Override
@@ -35,8 +34,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         context.deleteDatabase("patient_management.db");
     }
 
-    public Boolean insertuser(String username, String password, String nameSurname,
-                              String specialization, String email, String phone, String doctor)
+    public Boolean insertUser(String username, String password, String nameSurname,
+                              String specialization, String email, String phone)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -46,7 +45,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("specialization", specialization);
         contentValues.put("email", email);
         contentValues.put("phone", phone);
-        contentValues.put("doctor", doctor);
         long result=DB.insert("USERS", null, contentValues);
         if(result==-1){
             return false;
@@ -55,13 +53,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Boolean insertpatient(String pesel, String name, int doctor)
+    public Boolean insertPatient(String pesel, String nameSurname,
+                                 String treatmentHistory, String doctorUsername)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("pesel", pesel);
-        contentValues.put("name", name);
-        contentValues.put("doctor", doctor);
+        contentValues.put("nameSurname", nameSurname);
+        contentValues.put("treatmentHistory", treatmentHistory);
+        contentValues.put("doctorUsername", doctorUsername);
         long result=DB.insert("PATIENTS", null, contentValues);
         if(result==-1){
             return false;
@@ -103,21 +103,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Boolean insertdoctor(String name, String specialization, int room)
-    {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("specialization", specialization);
-        contentValues.put("room", room);
-        long result=DB.insert("DOCTORS", null, contentValues);
-        if(result==-1){
-            return false;
-        }else{
-            return true;
-        }
-    }
-
     public Boolean updateUser(String username, String nameSurname, String specialization, String email, String phone)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -139,28 +124,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Boolean deleteuser (String username)
+    public Boolean updatePatient(String pesel, String nameSurname,
+                                 String treatmentHistory, String doctorUsername)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("Select * from USERS where username = ?", new String[]{username});
-        if (cursor.getCount() > 0) {
-            long result = DB.delete("USERS", "username=?", new String[]{username});
-            if (result == -1) {
-                return false;
-            } else {
-                return true;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    public Boolean deletepatient (String pesel)
-    {
-        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("pesel", pesel);
+        contentValues.put("nameSurname", nameSurname);
+        contentValues.put("treatmentHistory", treatmentHistory);
         Cursor cursor = DB.rawQuery("Select * from PATIENTS where pesel = ?", new String[]{pesel});
         if (cursor.getCount() > 0) {
-            long result = DB.delete("PATIENTS", "pesel=?", new String[]{pesel});
+            long result = DB.update("PATIENTS", contentValues, "pesel=?", new String[]{pesel});
             if (result == -1) {
                 return false;
             } else {
@@ -187,6 +161,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Boolean deletePatient (String pesel)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from PATIENTS where pesel = ?", new String[]{pesel});
+        if (cursor.getCount() > 0) {
+            long result = DB.delete("PATIENTS", "pesel=?", new String[]{pesel});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public Cursor getUser (String username)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from USERS where username = ?", new String[]{username});
+        return cursor;
+    }
+
     public Cursor getuser ()
     {
         Log.i("myTag", "This is my message");
@@ -195,10 +192,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor getpatient ()
+    public Cursor getCurrentPatient (String pesel)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("Select pesel, name from PATIENTS", null);
+        Cursor cursor = DB.rawQuery("Select * from PATIENTS where pesel = ?", new String[]{pesel});
+        return cursor;
+    }
+
+    public Cursor getPatient ()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from PATIENTS", null);
         return cursor;
     }
 
@@ -213,20 +217,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("Select patient, doctor, description, date from VISITS", null);
-        return cursor;
-    }
-
-    public Cursor getdoctor (String username)
-    {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("Select * from USERS where username = ?", new String[]{username});
-        return cursor;
-    }
-
-    public Cursor getlastdoctor ()
-    {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT ID, name FROM DOCTORS WHERE ID=(SELECT max(ID) FROM DOCTORS);", null);
         return cursor;
     }
 }

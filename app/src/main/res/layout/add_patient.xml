@@ -1,63 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:background="@drawable/gradient_background"
     tools:context=".AddPatientActivity">
+
     <TextView
         android:id="@+id/texttitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Podaj dane nowego użytkownika"
+        android:text="Podaj dane nowego pacjenta"
+        android:textAlignment="center"
         android:textSize="24dp"
-        android:layout_marginTop="20dp"/>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="365dp"
+        android:layout_height="481dp"
+        android:layout_marginTop="36dp"
+        android:background="#E5D8D8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texttitle" />
+
     <EditText
         android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Imię i nazwisko"
-        android:textSize="24dp"
+        android:background="#E4FFFFFF"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/texttitle"
-        android:inputType="textPersonName"/>
+        android:layout_marginTop="24dp"
+        android:hint="Imię i nazwisko"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2" />
+
     <EditText
         android:id="@+id/pesel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Pesel"
-        android:textSize="24dp"
+        android:background="#E4FFFFFF"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/username"
-        android:inputType="text"/>
+        android:layout_marginTop="16dp"
+        android:hint="Pesel"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <EditText
+        android:id="@+id/treatmentHistory"
+        android:layout_width="298dp"
+        android:layout_height="239dp"
+        android:layout_below="@+id/pesel"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:background="#E4FFFFFF"
+        android:hint="Medical Informations"
+        android:inputType="textMultiLine"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/pesel" />
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btnDelete"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/btnInsert"-->
+    <!--        android:text="Usuń pacjenta"-->
+    <!--        android:textSize="24dp"-->
+    <!--        tools:layout_editor_absoluteX="-16dp"-->
+    <!--        tools:layout_editor_absoluteY="487dp" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btnView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/btnDelete"-->
+    <!--        android:text="Zobacz pacjentów"-->
+    <!--        android:textSize="24dp"-->
+    <!--        tools:layout_editor_absoluteX="3dp"-->
+    <!--        tools:layout_editor_absoluteY="554dp" />-->
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="344dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="28dp"
+        android:text="Wróć do widoku pacjentów"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnInsert"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
+        android:layout_width="297dp"
+        android:layout_height="52dp"
+        android:layout_below="@id/pesel"
+        android:layout_marginTop="16dp"
         android:text="Dodaj pacjenta"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/pesel"/>
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:textSize="24dp"
-        android:text="Usuń pacjenta"
-        android:layout_below="@id/btnInsert"/>
-    <Button
-        android:id="@+id/btnView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:text="Zobacz pacjentów"
-        android:layout_below="@id/btnDelete"/>
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:text="Wróć do widoku pacjentów"
-        android:layout_below="@id/btnView"/>
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/treatmentHistory" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

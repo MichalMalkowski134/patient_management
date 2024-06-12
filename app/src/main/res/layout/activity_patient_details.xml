@@ -9,10 +9,119 @@
     tools:context=".PatientDetailsActivity">
 
     <TextView
-        android:id="@+id/patient_details_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"/>
+        android:id="@+id/textView3"
+        android:layout_width="355dp"
+        android:layout_height="55dp"
+        android:text="SZCZEGÓŁY PACJENTA"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="361dp"
+        android:layout_height="447dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="172dp"
+        android:background="#E5D8D8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/patient_details_nameSurname"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#E4FFFFFF"
+        android:hint="Imię i nazwisko"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2" />
+
+    <EditText
+        android:id="@+id/patient_details_pesel"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/patient_details_nameSurname"
+        android:layout_marginTop="8dp"
+        android:background="#E4FFFFFF"
+        android:hint="Pesel"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/patient_details_nameSurname" />
+
+    <EditText
+        android:id="@+id/patient_details_treatmentHistory"
+        android:layout_width="298dp"
+        android:layout_height="239dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp"
+        android:background="#E4FFFFFF"
+        android:hint="Medical Informations"
+        android:inputType="textMultiLine"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/patient_details_pesel" />
+
+    <Button
+        android:id="@+id/update_button"
+        android:layout_width="297dp"
+        android:layout_height="52dp"
+        android:text="Zaktualizuj Dane"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/patient_details_treatmentHistory" />
+
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="297dp"
+        android:layout_height="52dp"
+        android:text="Usuń pacjenta"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.381" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="301dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="28dp"
+        android:onClick="backToPatients"
+        android:text="Wróć do widoku pacjentów"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.558" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

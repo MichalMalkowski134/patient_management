@@ -34,7 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         singleton = Singleton.getInstance();
         DB = new DatabaseHelper(this);
 
-        Cursor res = DB.getdoctor(singleton.getValue());
+        Cursor res = DB.getUser(singleton.getValue());
         res.moveToNext();
         editNameSurname.setText(res.getString(2));
         editSpecialization.setText(res.getString(3));

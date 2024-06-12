@@ -42,11 +42,8 @@ public class EditUsersActivity extends AppCompatActivity {
                 String emailTXT = email.getText().toString();
                 String phoneTXT = phone.getText().toString();
 
-                DB.insertdoctor(nameSurnameTXT, "", 0);
-                Cursor res = DB.getlastdoctor();
-                res.moveToNext();
-                Boolean checkinsertdata = DB.insertuser(usernameTXT, passwordTXT, nameSurnameTXT,
-                        specializationTXT , emailTXT, phoneTXT ,res.getString(0));
+                Boolean checkinsertdata = DB.insertUser(usernameTXT, passwordTXT, nameSurnameTXT,
+                        specializationTXT , emailTXT, phoneTXT);
                 if(checkinsertdata==true)
                 {
                     Toast.makeText(EditUsersActivity.this, "New Entry Inserted", Toast.LENGTH_SHORT).show();

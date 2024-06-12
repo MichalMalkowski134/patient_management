@@ -36,8 +36,6 @@ public class AddVisitActivity extends AppCompatActivity {
                 String patientTXT = patient.getText().toString();
                 String descriptionTXT = description.getText().toString();
                 String dateTXT = date.getText().toString();
-                Cursor res = DB.getlastdoctor();
-                res.moveToNext();
                 Boolean checkinsertdata = DB.insertvisits(patientTXT, singleton.getValue(), descriptionTXT, dateTXT);
                 if(checkinsertdata==true)
                 {
